@@ -1,0 +1,1108 @@
+    <script>
+        // FAQのトグル機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    const toggle = question.querySelector('.toggle');
+                    toggle.textContent = item.classList.contains('active') ? '-' : '+';
+                });
+            });
+            
+            // スクロールアニメーション
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkFade() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // 初期チェック
+            checkFade();
+            
+            // スクロール時のチェック
+            window.addEventListener('scroll', checkFade);
+            
+            // モバイルメニュートグル
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // ヘッダースクロール効果
+            let lastScrollTop = 0;
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop) {
+                    // 下にスクロール
+                    header.style.top = '-70px';
+                } else {
+                    // 上にスクロール
+                    header.style.top = '0';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script><!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNSマーケティング - 経営計画から逆算したSNS活用支援</title>
+    <meta name="description" content="豊田市・名古屋・岡崎でSNS運用代行、広告動画制作、SNS広告、SNS研修を提供。最新のアルゴリズムとプロの撮影技術で経営計画から逆算したSNS活用を支援します。">
+    <style>
+        /* リセットとベース */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap');
+        
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .title-font {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .nav-links a:hover {
+            color: #ff3333;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/800') center/cover no-repeat;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-family: 'Noto Serif JP', serif;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ff3333;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #cc0000;
+            transform: translateY(-3px);
+        }
+        
+        /* セクション共通スタイル */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            font-family: 'Noto Serif JP', serif;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #ff3333;
+        }
+        
+        /* コンセプトセクション */
+        .concept {
+            background-color: #151515;
+            position: relative;
+        }
+        
+        .concept:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.6));
+            z-index: 1;
+        }
+        
+        .concept .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .concept-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .services {
+            background: url('/api/placeholder/1200/800') center/cover no-repeat fixed;
+            position: relative;
+        }
+        
+        .services:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95));
+            z-index: 1;
+        }
+        
+        .services .container {
+            position: relative;
+            z-index: 2;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            padding: 30px;
+            background-color: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(5px);
+            transition: 0.3s ease;
+            border-bottom: 3px solid transparent;
+            border-radius: 3px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: #ff3333;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* 事例セクション */
+        .case-studies {
+            background-color: #151515;
+            position: relative;
+        }
+        
+        .case-studies:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1200/800') center/cover no-repeat fixed;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .case-studies .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* 実績テキストエリア */
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .success-story {
+            padding: 25px;
+            background-color: rgba(25, 25, 25, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 3px;
+            transition: 0.3s ease;
+            border-left: 3px solid #ff3333;
+        }
+        
+        .success-story:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .success-story h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 500;
+        }
+        
+        .sub-section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 500;
+        }
+        
+        /* 動画ギャラリー */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-item {
+            margin-bottom: 30px;
+        }
+        
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+        
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+            background-color: #000;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .video-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 51, 51, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            transition: 0.3s ease;
+        }
+        
+        .video-placeholder:hover img {
+            transform: scale(1.05);
+        }
+        
+        .video-placeholder:hover .play-button {
+            background-color: #ff3333;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-item h4 {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        /* 料金セクション */
+        .pricing {
+            background: linear-gradient(45deg, #0a0a0a, #151515);
+            position: relative;
+        }
+        
+        .pricing:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1200/800') center/cover no-repeat fixed;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .pricing .container {
+            position: relative;
+            z-index: 2;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            padding: 40px 30px;
+            background-color: rgba(25, 25, 25, 0.7);
+            backdrop-filter: blur(5px);
+            text-align: center;
+            transition: 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.2);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: #ff3333;
+        }
+        
+        .pricing-features {
+            margin: 25px 0;
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 10px;
+        }
+        
+        /* プロセスセクション */
+        .process {
+            background-color: #0f0f0f;
+            position: relative;
+        }
+        
+        .process:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(15, 15, 15, 0.95), rgba(20, 20, 20, 0.8));
+            z-index: 1;
+        }
+        
+        .process .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+        
+        .process-steps:before {
+            content: "";
+            position: absolute;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #333;
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 150px;
+        }
+        
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background-color: #ff3333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        /* FAQ セクション */
+        .faq {
+            background: linear-gradient(to bottom right, #0a0a0a, #151515);
+            position: relative;
+        }
+        
+        .faq:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1200/800') center/cover no-repeat fixed;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .faq .container {
+            position: relative;
+            z-index: 2;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: rgba(25, 25, 25, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 3px;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* お問い合わせセクション */
+        .contact {
+            background: url('/api/placeholder/1200/800') center/cover no-repeat fixed;
+            position: relative;
+        }
+        
+        .contact:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.8));
+            z-index: 1;
+        }
+        
+        .contact .container {
+            position: relative;
+            z-index: 2;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(25, 25, 25, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid #333;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 3px;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #ff3333;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* フッター */
+        footer {
+            background-color: #0a0a0a;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-heading:after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #ff3333;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: #ff3333;
+            padding-left: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #ff3333;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+            font-size: 14px;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 992px) {
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 20px;
+                transition: 0.5s;
+                gap: 20px;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* アニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 1s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">GradingLife</a>
+            <div class="menu-toggle">≡</div>
+            <nav class="nav-links">
+                <a href="#concept">コンセプト</a>
+                <a href="#services">サービス</a>
+                <a href="#case-studies">事例</a>
+                <a href="#pricing">料金</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact" class="btn">無料相談</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 class="title-font">作って終わらない<br>経営計画から逆算した映像制作</h1>
+            <p>集客採用に最新のアルゴリズムと<br>プロの撮影技術を持って<br>経営計画から逆算したSNS活用を支援します。<br>全ての場所を首都化。</p>
+            <a href="#contact" class="btn">無料相談はこちら</a>
+        </div>
+    </section>
+
+    <!-- コンセプトセクション -->
+    <section class="concept" id="concept">
+        <div class="container">
+            <h2 class="section-title fade-in">コンセプト</h2>
+            <div class="concept-grid">
+                <div class="concept-text fade-in">
+                    <h3>あなたの前にお客さんを連れてくる<br>SNSを活用した新たな営業代行</h3>
+                    <p>最前線で戦うSNSマーケティングのプロが運用。<br>御社に今一番必要なマーケティングを提案し<br>最も効果的な広告活動を実行します。</p>
+                    <p>私たちは単なる映像制作会社ではなく、<br>経営計画から逆算したSNS活用と映像制作を<br>ワンストップで提供。<br>あなたのビジネスを本質から理解し、<br>成果に繋がるSNSプロモーションを実現します。</p>
+                </div>
+                <div class="concept-image fade-in">
+                    <img src="/api/placeholder/600/400" alt="コンセプトイメージ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービスセクション -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">サービス</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3>SNS運用代行</h3>
+                    <p>御社のSNSアカウントを<br>専門チームが完全代行。<br>コンテンツ企画から投稿、分析、<br>改善までワンストップで実施します。</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>SNSアドバイザー</h3>
+                    <p>社内で運用するチームに対して、<br>最新のアルゴリズムや<br>効果的な戦略をアドバイス。<br>定期的なミーティングでPDCAを回します。</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>内製化研修</h3>
+                    <p>自社でSNS運用できる人材を育成。<br>実践的なノウハウを身につけ、<br>持続可能なSNS運用体制を構築します。</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>広告動画制作</h3>
+                    <p>プロの撮影技術と編集センスで、<br>SNSで拡散される高品質な広告動画を制作。<br>一眼レフ・ドローン撮影対応可能です。</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>ブランディング動画</h3>
+                    <p>御社の価値や強みを伝える映像で、<br>ブランドイメージを確立。<br>採用や信頼構築に効果的です。</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>SNS広告運用</h3>
+                    <p>効果的なターゲティングと<br>広告クリエイティブで、<br>費用対効果の高いSNS広告運用を<br>実現します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 事例セクション -->
+    <section class="case-studies" id="case-studies">
+        <div class="container">
+            <h2 class="section-title fade-in">作成事例</h2>
+            
+            <!-- 実績テキスト -->
+            <div class="success-stories fade-in">
+                <div class="success-story">
+                    <h3>サウナ施設の集客成功事例</h3>
+                    <p>SNS運用を始めた１ヶ月目から<br>60名以上の予約が入り、<br>継続的な集客に成功。</p>
+                </div>
+                <div class="success-story">
+                    <h3>動画マーケティングでフォロワー急増</h3>
+                    <p>戦略的な動画10本で<br>フォロワー2000人を達成。<br>3ヶ月で企業案件の依頼も多数獲得。</p>
+                </div>
+                <div class="success-story">
+                    <h3>売上20%アップの成功事例</h3>
+                    <p>SNS運用により昨年比1000万円売り上げ向上。<br>効果的なプロモーションで<br>認知拡大に成功。</p>
+                </div>
+                <div class="success-story">
+                    <h3>採用活動強化の成功事例</h3>
+                    <p>運用開始から1ヶ月で<br>社員採用2名成功。<br>企業イメージ向上で<br>優秀な人材確保に貢献。</p>
+                </div>
+            </div>
+            
+            <!-- 動画ギャラリー -->
+            <h3 class="sub-section-title fade-in">制作事例</h3>
+            <div class="video-gallery">
+                <div class="video-item fade-in">
+                    <div class="video-container">
+                        <!-- 動画プレースホルダー - 実際の実装時には video タグや iframe に置き換え -->
+                        <div class="video-placeholder">
+                            <img src="/api/placeholder/400/225" alt="動画サムネイル1">
+                            <div class="play-button">▶</div>
+                        </div>
+                    </div>
+                    <h4>企業プロモーション</h4>
+                </div>
+                <div class="video-item fade-in">
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <img src="/api/placeholder/400/225" alt="動画サムネイル2">
+                            <div class="play-button">▶</div>
+                        </div>
+                    </div>
+                    <h4>商品プロモーション</h4>
+                </div>
+                <div class="video-item fade-in">
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <img src="/api/placeholder/400/225" alt="動画サムネイル3">
+                            <div class="play-button">▶</div>
+                        </div>
+                    </div>
+                    <h4>サービス紹介</h4>
+                </div>
+                <div class="video-item fade-in">
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <img src="/api/placeholder/400/225" alt="動画サムネイル4">
+                            <div class="play-button">▶</div>
+                        </div>
+                    </div>
+                    <h4>ブランディング</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金セクション -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title fade-in">料金</h2>
+            <p class="text-center fade-in">御社に一番必要なものを必要なタイミングで提案、提供いたします</p>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>SNS運用代行</h3>
+                    <div class="price">月額 3万円〜</div>
+                    <p>プランにより金額は変動しますが、<br>多くのお客様が3万〜30万円の間で<br>ご満足いただけるサービスを<br>提供しています。</p>
+                    <a href="#contact" class="btn">詳細を問い合わせる</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3>広告動画制作</h3>
+                    <div class="price">4万円〜/本</div>
+                    <p>目的やクオリティに応じて<br>カスタマイズ可能。<br>イベントの撮影や施設紹介は<br>8万円〜となります。</p>
+                    <a href="#contact" class="btn">詳細を問い合わせる</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3>内製化研修</h3>
+                    <div class="price">約39万円〜/名</div>
+                    <p>自社でSNS運用できる人材を育成。<br>実践的なノウハウと<br>最新のトレンドを学べます。</p>
+                    <a href="#contact" class="btn">詳細を問い合わせる</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロセスセクション -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title fade-in">利用の流れ</h2>
+            <div class="process-steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h4>無料相談申し込み</h4>
+                    <p>お問い合わせフォームからご連絡ください</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <h4>初回面談日程調整</h4>
+                    <p>ご都合の良い日時をご提案します</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <h4>無料ヒアリング</h4>
+                    <p>Zoomミーティングでニーズをお伺いします</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">4</div>
+                    <h4>戦略設計</h4>
+                    <p>経営計画から逆算した戦略を設計します</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">5</div>
+                    <h4>運用開始</h4>
+                    <p>プランに沿って運用を開始します</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ セクション -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title fade-in">よくある質問</h2>
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>納期はどれくらいですか？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>制作物にもよりますが<br>早い場合は1日後〜1週間、<br>遅くとも1ヶ月程度になります。<br>緊急対応も可能ですので、<br>お気軽にご相談ください。</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>個人からの依頼も可能ですか？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>もちろん可能です。<br>会社員様や個人事業主様からも<br>ご好評いただいております。<br>個人の方向けの特別プランも<br>ございますので、ぜひご相談ください。</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>相談だけ、相見積もりだけでも大丈夫ですか？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>もちろんです。<br>無料相談だけでも必ずお役に立てる<br>アドバイスやご提案をさせていただきますので、<br>お気軽にご相談ください。</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>どんな動画を作ってくれますか？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>企業の目的から逆算した<br>価値のある動画を制作しますので<br>どの動画を作るかは<br>ご提案させていただければと思います。<br>商品PR、会社紹介、採用動画、<br>サービス紹介など、<br>幅広い用途に対応しています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">無料相談はこちら</h2>
+            <form class="contact-form fade-in">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="お名前" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="メールアドレス" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" placeholder="電話番号">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="会社名">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="ご相談内容" required></textarea>
+                </div>
+                <button type="submit" class="btn">送信する</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-heading">GradingLife</h4>
+                    <p>集客採用に最新のアルゴリズムと<br>プロの撮影技術を持って<br>経営計画から逆算した<br>SNS活用を支援します。</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">X</a>
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IG</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">サービス</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">SNS運用代行</a></li>
+                        <li><a href="#services">SNSアドバイザー</a></li>
+                        <li><a href="#services">内製化研修</a></li>
+                        <li><a href="#services">広告動画制作</a></li>
+                        <li><a href="#services">ブランディング動画</a></li>
+                        <li><a href="#services">SNS広告運用</a></li>
+                    </ul>
+                </div>
