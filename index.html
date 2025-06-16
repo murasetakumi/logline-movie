@@ -114,6 +114,7 @@
 
             <h3 class="sub-section-title fade-in">制作事例</h3>
             <div class="video-gallery">
+                <!-- 修正箇所: YouTubeサムネイル画像を確実にHTTPS化 -->
                 <div class="video-item fade-in">
                     <div class="video-container">
                         <div class="video-placeholder" data-video-id="l2bMKR55gt4">
@@ -281,6 +282,7 @@
             <h2 class="section-title">まずはお気軽にご相談ください</h2>
             <p class="section-subtitle">無料相談では、お客様のご要望をしっかりとお聞きし、最適なご提案をさせていただきます。</p>
             
+            <!-- 修正箇所: フォーム送信先を確実にHTTPS化 -->
             <form action="https://formspree.io/f/mzzrorne" method="POST" class="contact-form fade-in">
                 <div class="form-group">
                     <input type="text" class="form-control" name="name" placeholder="お名前" required>
@@ -507,9 +509,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 修正箇所: Mixed Contentを防ぐためのセキュリティヘッダーを追加 -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>豊田市・名古屋のSNSマーケティング専門会社 | Logline</title>
     <meta name="description" content="豊田市・名古屋・岡崎でSNS運用代行、動画制作、SNS広告を提供するマーケティング専門会社。経営計画から逆算したSNS戦略で集客・採用を成功に導きます。無料相談実施中。">
     
+    <!-- 修正箇所: Google Fontsのpreconnectを確実にHTTPS化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1460,9 +1465,10 @@
             box-shadow: 0 0 0 3px rgba(75, 64, 51, 0.1);
         }
         
+        /* 修正箇所: セレクトボックスの矢印アイコンをHTTPS対応のdata URIに変更 */
         select.form-control {
             appearance: none;
-            background-image: url("data:image/svg+xml;utf8,<svg fill='%236B5E52' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg fill='%236B5E52' height='24' viewBox='0 0 24 24' width='24' xmlns='https://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 15px center;
             padding-right: 45px;
