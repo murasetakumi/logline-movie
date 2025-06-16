@@ -4,8 +4,9 @@
 <body>
     <header>
         <div class="container header-container">
+            <!-- 修正箇所: ローカル画像をルート相対パスに変更 -->
             <a href="#home" class="logo">
-                <img src="Hp11.png" alt="Logline" />
+                <img src="/Hp11.png" alt="Logline" />
                 <span class="logo-text">Logline</span>
             </a>
             <button class="menu-toggle" aria-label="メニューを開く">☰</button>
@@ -755,12 +756,13 @@
             align-items: center;
         }
         
+        /* 修正箇所: ローカル画像をルート相対パスに変更 */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             background: linear-gradient(rgba(249, 236, 222, 0.7), rgba(249, 236, 222, 0.7)),
-                        url('Hp1.png') center center / cover no-repeat;
+                        url('/Hp1.png') center center / cover no-repeat;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
