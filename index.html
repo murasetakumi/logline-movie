@@ -459,14 +459,18 @@
                 rootMargin: '0px 0px -80px 0px'
             };
             
+            // 修正箇所: Intersection Observerの軽量化
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        // 修正箇所: 一度表示されたら監視を停止して軽量化
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
             
+            // 修正箇所: 必要な要素のみ監視して軽量化
             document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
                 observer.observe(el);
             });
